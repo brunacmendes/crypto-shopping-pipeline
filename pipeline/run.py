@@ -2,19 +2,26 @@
 Run with:
     python3 -m pipeline.run
 """
+
+print("1 - run.py started")
  
 import logging
 import time
 from contextlib import contextmanager
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
- 
+
+print("2 - standard imports done")
+
 from pipeline.extract import (
     load_shopping_dataset,
     get_coin_ids,
     resolve_coin_id,
     get_historical_prices_concurrent,
 )
+
+print("3 - extract imported")
+
 from pipeline.transform import (
     clean_shopping_df,
     shift_year,
@@ -22,9 +29,14 @@ from pipeline.transform import (
     join_purchases_crypto,
     validate_all,
 )
+
+print("4 - transform imported")
+
 ##from pipeline.validate import validate_all
-from pipeline.load import get_engine, create_schema, load_tables
- 
+from pipeline.load import get_engine, create_schema, load_tables,run_example_query
+
+print("5 - load imported")
+
 log = logging.getLogger(__name__)
  
 CSV_PATH = "2019-Oct.csv"  # the source dataset is from 2019, but we will shift its year to 2025
@@ -113,6 +125,7 @@ def main() -> None:
         engine = get_engine()
         create_schema(engine)
         load_tables(engine, purchases=good, crypto=crypto, rejects=rejects)
+        run_example_query(engine,)
  
     total = time.perf_counter() - run_start
     log.info(

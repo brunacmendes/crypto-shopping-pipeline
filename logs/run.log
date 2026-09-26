@@ -1002,3 +1002,120 @@ unnamed portal parameter $2 = '...'
 [SQL: INSERT INTO rejected_rows (reason, raw_row) VALUES (%(reason)s, %(raw_row)s)]
 [parameters: [{'reason': 'duplicate_row', 'raw_row': '{"event_time": "2025-10-01 06:41:39+00:00", "event_type": "purchase", "product_id": 1004856, "category_id": 2053013555631882655, "category_code": "el ... (135 characters truncated) ... ", "purchase_date": "2025-10-01", "coin_id": "binancecoin", "vol_bucket": null, "daily_return": NaN, "volatility_7d": NaN, "reason": "duplicate_row"}'}, {'reason': 'duplicate_row', 'raw_row': '{"event_time": "2025-10-01 06:41:39+00:00", "event_type": "purchase", "product_id": 1004856, "category_id": 2053013555631882655, "category_code": "el ... (131 characters truncated) ... 238c", "purchase_date": "2025-10-01", "coin_id": "bitcoin", "vol_bucket": null, "daily_return": NaN, "volatility_7d": NaN, "reason": "duplicate_row"}'}, {'reason': 'duplicate_row', 'raw_row': '{"event_time": "2025-10-01 06:41:39+00:00", "event_type": "purchase", "product_id": 1004856, "category_id": 2053013555631882655, "category_code": "el ... (132 characters truncated) ... 38c", "purchase_date": "2025-10-01", "coin_id": "ethereum", "vol_bucket": null, "daily_return": NaN, "volatility_7d": NaN, "reason": "duplicate_row"}'}, {'reason': 'duplicate_row', 'raw_row': '{"event_time": "2025-10-01 06:41:39+00:00", "event_type": "purchase", "product_id": 1004856, "category_id": 2053013555631882655, "category_code": "el ... (130 characters truncated) ... a238c", "purchase_date": "2025-10-01", "coin_id": "solana", "vol_bucket": null, "daily_return": NaN, "volatility_7d": NaN, "reason": "duplicate_row"}'}, {'reason': 'duplicate_row', 'raw_row': '{"event_time": "2025-10-01 06:41:39+00:00", "event_type": "purchase", "product_id": 1004856, "category_id": 2053013555631882655, "category_code": "el ... (130 characters truncated) ... a238c", "purchase_date": "2025-10-01", "coin_id": "tether", "vol_bucket": null, "daily_return": NaN, "volatility_7d": NaN, "reason": "duplicate_row"}'}, {'reason': 'duplicate_row', 'raw_row': '{"event_time": "2025-10-01 12:42:40+00:00", "event_type": "purchase", "product_id": 1004767, "category_id": 2053013555631882655, "category_code": "el ... (135 characters truncated) ... ", "purchase_date": "2025-10-01", "coin_id": "binancecoin", "vol_bucket": null, "daily_return": NaN, "volatility_7d": NaN, "reason": "duplicate_row"}'}, {'reason': 'duplicate_row', 'raw_row': '{"event_time": "2025-10-01 12:42:40+00:00", "event_type": "purchase", "product_id": 1004767, "category_id": 2053013555631882655, "category_code": "el ... (131 characters truncated) ... 6aca", "purchase_date": "2025-10-01", "coin_id": "bitcoin", "vol_bucket": null, "daily_return": NaN, "volatility_7d": NaN, "reason": "duplicate_row"}'}, {'reason': 'duplicate_row', 'raw_row': '{"event_time": "2025-10-01 12:42:40+00:00", "event_type": "purchase", "product_id": 1004767, "category_id": 2053013555631882655, "category_code": "el ... (132 characters truncated) ... aca", "purchase_date": "2025-10-01", "coin_id": "ethereum", "vol_bucket": null, "daily_return": NaN, "volatility_7d": NaN, "reason": "duplicate_row"}'}  ... displaying 10 of 380 total bound parameter sets ...  {'reason': 'duplicate_row', 'raw_row': '{"event_time": "2025-10-31 08:12:51+00:00", "event_type": "purchase", "product_id": 1004209, "category_id": 2053013555631882655, "category_code": "el ... (164 characters truncated) ... 1", "coin_id": "solana", "vol_bucket": "low", "daily_return": -0.049312103880043257, "volatility_7d": 0.02555427231470493, "reason": "duplicate_row"}'}, {'reason': 'duplicate_row', 'raw_row': '{"event_time": "2025-10-31 08:12:51+00:00", "event_type": "purchase", "product_id": 1004209, "category_id": 2053013555631882655, "category_code": "el ... (130 characters truncated) ... 3fc1", "purchase_date": "2025-10-31", "coin_id": "tether", "vol_bucket": "low", "daily_return": 0.0, "volatility_7d": 0.0, "reason": "duplicate_row"}'}]]
 (Background on this error at: https://sqlalche.me/e/21/9h9h)
+2026-09-26 01:20:25,606 [INFO] __main__: === Pipeline run started ===
+2026-09-26 01:20:25,611 [INFO] __main__: Starting step: extract
+2026-09-26 01:20:25,612 [INFO] pipeline.extract: Loading shopping CSV file 2019-Oct.csv
+2026-09-26 01:21:24,881 [INFO] pipeline.extract: Loaded 42448764 rows, 9 columns
+2026-09-26 01:21:28,874 [INFO] pipeline.extract: Using cached coins list (21589 coins)
+2026-09-26 01:21:28,890 [INFO] pipeline.extract: Fetched 21589 coin ids from CoinGecko
+2026-09-26 01:21:30,937 [INFO] pipeline.extract: Starting concurrent historical extraction for 5 coins with 5 workers
+2026-09-26 01:21:32,784 [INFO] pipeline.extract: Using cached response for range_solana_2025-10-01_2025-11-01
+2026-09-26 01:21:32,820 [INFO] pipeline.extract: Using cached response for range_tether_2025-10-01_2025-11-01
+2026-09-26 01:21:32,829 [INFO] pipeline.extract: Using cached response for range_bitcoin_2025-10-01_2025-11-01
+2026-09-26 01:21:32,831 [INFO] pipeline.extract: Using cached response for range_ethereum_2025-10-01_2025-11-01
+2026-09-26 01:21:32,831 [INFO] pipeline.extract: Using cached response for range_binancecoin_2025-10-01_2025-11-01
+2026-09-26 01:21:32,834 [INFO] pipeline.extract: Completed historical extraction: coin_id=solana rows=32
+2026-09-26 01:21:32,840 [INFO] pipeline.extract: Completed historical extraction: coin_id=tether rows=32
+2026-09-26 01:21:32,840 [INFO] pipeline.extract: Completed historical extraction: coin_id=bitcoin rows=32
+2026-09-26 01:21:32,840 [INFO] pipeline.extract: Completed historical extraction: coin_id=ethereum rows=32
+2026-09-26 01:21:32,840 [INFO] pipeline.extract: Completed historical extraction: coin_id=binancecoin rows=32
+2026-09-26 01:21:32,842 [INFO] __main__: Finished step: extract (67.23s)
+2026-09-26 01:21:32,842 [INFO] __main__: Starting step: transform
+2026-09-26 01:22:57,015 [INFO] pipeline.transform: Purchase df null columns:
+event_time              0
+event_type              0
+product_id              0
+category_id             0
+category_code    13478561
+brand             6048407
+price                   0
+user_id                 0
+user_session            2
+2026-09-26 01:23:00,266 [INFO] pipeline.transform: Event types in dataset:
+event_type
+view        40710876
+cart          926366
+purchase      742849
+2026-09-26 01:23:04,450 [INFO] pipeline.transform: clean_shopping: kept 742849/42448764 rows with event_type == 'purchase'
+2026-09-26 01:23:04,500 [INFO] pipeline.transform: clean_shopping: 42448764 -> 742849 rows (dropped 41705915, capped 7410)
+2026-09-26 01:23:07,421 [INFO] pipeline.transform: shift_year: event_time shifted from 2019 -> 2025 (742849 rows, range 2025-10-01 to 2025-10-31)
+2026-09-26 01:23:07,552 [WARNING] pipeline.transform: add_crypto_metrics: tether has only 1 distinct volatility value(s) in the valid window — using fewer buckets instead of the usual low/medium/high split
+2026-09-26 01:23:07,553 [INFO] pipeline.transform: add_crypto_metrics: 160 rows, 5 coins, 145 bucketed rows
+2026-09-26 01:23:08,095 [INFO] pipeline.transform: join_purchases_crypto: 3714245 purchases joined, 290155 unmatched (7.8%),5 coins
+2026-09-26 01:23:08,107 [INFO] __main__: Finished step: transform (95.27s)
+2026-09-26 01:23:08,107 [INFO] __main__: Starting step: validate
+2026-09-26 01:23:09,856 [INFO] pipeline.transform: validate_all: 3713865 good, 380 rejected ({'duplicate_row': 380})
+2026-09-26 01:23:09,957 [WARNING] __main__: 380 rows failed validation and were rejected
+2026-09-26 01:23:09,957 [INFO] __main__: Finished step: validate (1.85s)
+2026-09-26 01:23:09,957 [INFO] __main__: Starting step: load
+2026-09-26 01:25:48,793 [INFO] pipeline.load: Schema created
+2026-09-26 01:27:50,803 [INFO] pipeline.load: Loaded 3713865 purchases, 160 crypto days into PostgreSQL
+2026-09-26 01:27:50,953 [ERROR] __main__: Step failed: load
+Traceback (most recent call last):
+  File "/Users/brunamendes/Desktop/AECOM/crypto-shopping-pipeline/pipeline/run.py", line 65, in timed
+    yield
+  File "/Users/brunamendes/Desktop/AECOM/crypto-shopping-pipeline/pipeline/run.py", line 115, in main
+    load_tables(engine, purchases=good, crypto=crypto, rejects=rejects)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/brunamendes/Desktop/AECOM/crypto-shopping-pipeline/pipeline/load.py", line 89, in load_tables
+    _load_rejects(engine, rejects)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/brunamendes/Desktop/AECOM/crypto-shopping-pipeline/pipeline/load.py", line 105, in _load_rejects
+    "raw_row": json.dumps(clean_row),
+               ~~~~~~~~~~^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/opt/homebrew/Cellar/python@3.13/3.13.1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/encoder.py", line 261, in iterencode
+    return _iterencode(o, 0)
+  File "/opt/homebrew/Cellar/python@3.13/3.13.1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+                    f'is not JSON serializable')
+TypeError: Object of type Timestamp is not JSON serializable
+2026-09-26 02:12:16,537 [INFO] __main__: === Pipeline run started ===
+2026-09-26 02:12:16,540 [INFO] __main__: Starting step: extract
+2026-09-26 02:12:16,540 [INFO] pipeline.extract: Loading shopping CSV file 2019-Oct.csv
+2026-09-26 02:13:05,998 [INFO] pipeline.extract: Loaded 42448764 rows, 9 columns
+2026-09-26 02:13:06,358 [INFO] pipeline.extract: Fetched 21590 coin ids from CoinGecko
+2026-09-26 02:13:08,932 [INFO] pipeline.extract: Starting concurrent historical extraction for 5 coins with 5 workers
+2026-09-26 02:13:09,209 [INFO] pipeline.extract: Completed historical extraction: coin_id=solana rows=32
+2026-09-26 02:13:09,209 [INFO] pipeline.extract: Completed historical extraction: coin_id=tether rows=32
+2026-09-26 02:13:09,209 [INFO] pipeline.extract: Completed historical extraction: coin_id=binancecoin rows=32
+2026-09-26 02:13:09,215 [INFO] pipeline.extract: Completed historical extraction: coin_id=bitcoin rows=32
+2026-09-26 02:13:09,215 [INFO] pipeline.extract: Completed historical extraction: coin_id=ethereum rows=32
+2026-09-26 02:13:09,216 [INFO] __main__: Finished step: extract (52.68s)
+2026-09-26 02:13:09,216 [INFO] __main__: Starting step: transform
+2026-09-26 02:14:33,567 [INFO] pipeline.transform: Purchase df null columns:
+event_time              0
+event_type              0
+product_id              0
+category_id             0
+category_code    13478561
+brand             6048407
+price                   0
+user_id                 0
+user_session            2
+2026-09-26 02:14:36,888 [INFO] pipeline.transform: Event types in dataset:
+event_type
+view        40710876
+cart          926366
+purchase      742849
+2026-09-26 02:14:40,833 [INFO] pipeline.transform: clean_shopping: kept 742849/42448764 rows with event_type == 'purchase'
+2026-09-26 02:14:40,871 [INFO] pipeline.transform: clean_shopping: 42448764 -> 742849 rows (dropped 41705915, capped 7410)
+2026-09-26 02:14:43,696 [INFO] pipeline.transform: shift_year: event_time shifted from 2019 -> 2025 (742849 rows, range 2025-10-01 to 2025-10-31)
+2026-09-26 02:14:44,042 [WARNING] pipeline.transform: add_crypto_metrics: tether has only 1 distinct volatility value(s) in the valid window — using fewer buckets instead of the usual low/medium/high split
+2026-09-26 02:14:44,042 [INFO] pipeline.transform: add_crypto_metrics: 160 rows, 5 coins, 145 bucketed rows
+2026-09-26 02:14:44,672 [INFO] pipeline.transform: join_purchases_crypto: 3714245 purchases joined, 290155 unmatched (7.8%),5 coins
+2026-09-26 02:14:44,691 [INFO] __main__: Finished step: transform (95.48s)
+2026-09-26 02:14:44,691 [INFO] __main__: Starting step: validate
+2026-09-26 02:14:46,572 [INFO] pipeline.transform: validate_all: 3713865 good, 380 rejected ({'duplicate_row': 380})
+2026-09-26 02:14:46,819 [WARNING] __main__: 380 rows failed validation and were rejected
+2026-09-26 02:14:46,820 [INFO] __main__: Finished step: validate (2.13s)
+2026-09-26 02:14:46,820 [INFO] __main__: Starting step: load
+2026-09-26 02:17:13,696 [INFO] pipeline.load: Schema created
+2026-09-26 02:19:40,164 [INFO] pipeline.load: Loaded 3713865 purchases, 160 crypto days into PostgreSQL
+2026-09-26 02:19:40,354 [INFO] pipeline.load: Logged 1 rejected rows to rejected_rows
+2026-09-26 02:19:50,351 [INFO] __main__: Finished step: load (303.53s)
+2026-09-26 02:19:50,352 [INFO] __main__: === Pipeline run finished in 453.81s | purchases=3713865 rejected=380 crypto_days=160 ===

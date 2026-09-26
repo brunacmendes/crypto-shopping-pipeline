@@ -159,8 +159,8 @@ cleared before each run. Timed with `time.perf_counter()`.
  
 | Approach   | Execution time | Rows returned |
 |------------|-----------------|----------------|
-| Serial     | _XX.XX s_       | _XXXX_         |
-| Concurrent | _XX.XX s_       | _XXXX_         |
+| Serial     | _3.80 s_       | _150_         |
+| Concurrent | _0.09 s_       | _150_         |
  
  
 In production, I'd make the number of concurrent workers configurable
@@ -183,36 +183,49 @@ failed without re-running it.
 a CoinGecko API key, a Kaggle API token.
  
 ```bash
-git clone <repo-url>
+git clone https://github.com/brunacmendes/crypto-shopping-pipeline.git
 ```
 ```bash
 cd crypto-shopping-pipeline
- ```
- ```bash
+```
+```bash
 python3 -m venv .venv
- ```
-  ```bash
+```
+```bash
 source .venv/bin/activate
- ```
-   ```bash
+```
+```bash
 python3 -m pip install -r requirements.txt
- ```
-  ```bash
+```
+```bash
 export KAGGLE_API_TOKEN=your_kaggle_token_here
- ```
-   ```bash
+```
+```bash
 export COINGECKO_API_KEY=your_coingecko_key_here
- ```
-    ```bash
+```
+Postgres config/activation:
+```bash
+brew install postgresql
+```
+```bash
+brew services start postgresql@18
+```
+```bash
+brew install --cask postgres-app
+```
+```bash
+psql -U postgres -c "CREATE DATABASE pipeline;"
+```
+```bash
 export DATABASE_URL=postgresql+psycopg://postgres:postgres@localhost:5432/pipeline
-  ```
-  ```bash
+```
+Run the Pipeline:
+```bash
 python3 -m pipeline.run
 ```
- 
 Query the results:
 ```bash
-psql "$DATABASE_URL" -f sql/example_queries.sql
+psql "${DATABASE_URL/postgresql+psycopg/postgresql}" -f sql/queries_examples.sql
 ```
  
 Run the tests:
@@ -222,7 +235,7 @@ python3 -m pytest
  
 Run the concurrency benchmark:
 ```bash
-python3 benchmark.py
+python3 -m  benchmark
 ```
  
 ## What I'd do differently
@@ -233,5 +246,4 @@ With more time, I would:
   via environment variables instead of constants in the code.
 - Run the benchmark multiple times and report mean/variance instead of a
   single measurement.
--
  

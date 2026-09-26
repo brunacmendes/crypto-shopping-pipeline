@@ -1,3 +1,4 @@
+print("1 - becnhmark.py started")
 import logging
 import time
 from datetime import datetime, timedelta, timezone
@@ -11,6 +12,7 @@ from pipeline.extract import (
     get_historical_prices_concurrent,
 )
 
+print("2 - extract imported")
 
 def _clear_cache():
     if CACHE_DIR.exists():

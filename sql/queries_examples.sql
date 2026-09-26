@@ -44,7 +44,7 @@ FROM spend
 ORDER BY vol_bucket, pct_of_bucket DESC;
  
  
---is there a linear relationship between daily spend and the volatility (or the size of the move) of ONE specific coin? Run this once
+--is there a linear relationship between daily spend and the volatility (or the size of the move) of ONE specific coin? Run this onc
 WITH daily AS (
     SELECT p.purchase_date AS date,
            SUM(p.price) AS total_spend,
@@ -59,6 +59,33 @@ SELECT COUNT(*)                                               AS n_days,
        ROUND(corr(total_spend, volatility_7d)::numeric, 3)    AS corr_spend_vol,
        ROUND(corr(total_spend, ABS(daily_return))::numeric, 3) AS corr_spend_abs_move
 FROM daily;
+
+WITH daily_summary AS (
+    SELECT
+        p.date,
+        p.coin_id,
+        c.volatility_7d,
+        c.daily_return,
+        AVG(p.price_usd * p.quantity) AS avg_spend
+    FROM fact_purchases p
+    JOIN dim_crypto_daily c
+        ON c.coin_id = p.coin_id
+       AND c.date = p.date
+    GROUP BY
+        p.date,
+        p.coin_id,
+        c.volatility_7d,
+        c.daily_return
+)
+SELECT
+    coin_id,
+    COUNT(*) AS n_days,
+    CORR(avg_spend, volatility_7d) AS corr_spend_vol,
+    CORR(avg_spend, ABS(daily_return)) AS corr_spend_abs_move
+FROM daily_summary
+WHERE volatility_7d IS NOT NULL
+GROUP BY coin_id
+ORDER BY coin_id;
 
 --does yesterday's return explain today's spend?
 WITH ret AS (
@@ -90,4 +117,12 @@ LEFT JOIN dim_crypto_daily d
 WHERE p.coin_id = 'bitcoin'
 GROUP BY p.purchase_date, COALESCE(d.vol_bucket, 'unknown')
 ORDER BY date;
+
+
+SELECT
+    REGR_SLOPE(avg_spend, volatility_7d) AS slope,
+    REGR_INTERCEPT(avg_spend, volatility_7d) AS intercept,
+    REGR_R2(avg_spend, volatility_7d) AS r_squared
+FROM daily_summary
+WHERE volatility_7d IS NOT NULL;
  

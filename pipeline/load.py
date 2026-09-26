@@ -102,7 +102,7 @@ def _load_rejects(engine, rejects: pd.DataFrame) -> None:
     rows.append(
             {
                 "reason": r["reason"],
-                "raw_row": json.dumps(clean_row),
+                "raw_row": json.dumps(clean_row, default=str),
             }
         )
 
