@@ -228,7 +228,7 @@ Query the results:
 psql "${DATABASE_URL/postgresql+psycopg/postgresql}" -f sql/queries_examples.sql
 ```
  
-Run the tests:
+Run pytest:
 ```bash
 python3 -m pytest
 ```
@@ -241,7 +241,7 @@ python3 -m  benchmark
 ## What I'd do differently
  
 With more time, I would:
-- Add response-shape validation on every CoinGecko endpoint.
+- Add response validation on every CoinGecko endpoint.
 - Make the number of concurrent workers and the cache TTL configurable
   via environment variables instead of constants in the code.
 - Run the benchmark multiple times and report mean/variance instead of a
